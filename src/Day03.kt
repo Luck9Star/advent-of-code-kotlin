@@ -16,25 +16,18 @@ fun main() {
             data.map { it[i] }.average().roundToInt()
         }
         val epsilons = gammas.map { 1 - it }
-
-
         val gamma = binToInt10(gammas)
         val epsilon = binToInt10(epsilons)
-
-
         return Math.multiplyExact(gamma, epsilon)
     }
 
 
     fun lifeSupport(data: List<List<Int>>, index: Int, co2: Boolean): List<Int> {
+        if (data.size == 1) return data[0]
         var bin = data.map { it[index] }.average().roundToInt()
         if (co2) bin = 1 - bin
         val binaries = data.filter { it[index] == bin }
-        return if (binaries.size > 1) {
-            lifeSupport(binaries, index + 1, co2)
-        } else {
-            binaries[0]
-        }
+        return lifeSupport(binaries, index + 1, co2)
     }
 
     fun part2(input: List<String>): Int {
