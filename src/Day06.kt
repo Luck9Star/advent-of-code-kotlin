@@ -24,9 +24,9 @@ fun main() {
             newMap[-1]?.let {
                 newMap[bron] = it
                 if (newMap.containsKey(life)) {
-                    newMap[6] = newMap[6]!!.plus(it)
+                    newMap[life] = newMap[life]!!.plus(it)
                 } else {
-                    newMap[6] = it
+                    newMap[life] = it
                 }
                 newMap.remove(-1)
             }
